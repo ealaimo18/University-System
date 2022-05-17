@@ -31,3 +31,18 @@ In order to graduate MS and PhD students must submit a Form 1. This is similar t
   - Graduate Secretary : This user can view all applicants and their statuses. They can approve and deny applicants to HC. They also review applications to graduate, which they alone approve or deny. 
   - System Administrator : This user is a 'super' user. They can create any other kind of user and also delete any other user. They can also view all data and information on any of the users in the system and edit it. 
 
+# Example Views
+
+<img width="748" alt="Screen Shot 2022-05-17 at 12 01 13 PM" src="https://user-images.githubusercontent.com/73393532/168861973-4eb54e06-b01c-4870-a95f-e6e36b24bcc3.png">
+
+<img width="713" alt="Screen Shot 2022-05-17 at 12 01 29 PM" src="https://user-images.githubusercontent.com/73393532/168862016-05d255c3-db8d-4523-baf2-069ec1280b71.png">
+
+<img width="714" alt="Screen Shot 2022-05-17 at 12 02 40 PM" src="https://user-images.githubusercontent.com/73393532/168862052-cbe86ac5-aa4d-4dd8-b9d2-d8c9bb0f2301.png">
+
+<img width="710" alt="Screen Shot 2022-05-17 at 12 02 17 PM" src="https://user-images.githubusercontent.com/73393532/168862035-17e65a95-8684-421f-a195-7de3310e0a58.png">
+
+<img width="715" alt="Screen Shot 2022-05-17 at 12 25 26 PM" src="https://user-images.githubusercontent.com/73393532/168862080-2f60414e-2602-4613-98d6-9b401f40a561.png">
+
+
+
+
