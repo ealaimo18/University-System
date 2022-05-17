@@ -1,5 +1,7 @@
 # University-System
 
+Created in collaboration with.
+
 This is flask powered application that interacts with an SQL database. 
 This application provides a full univserity workflow. Name Hippo Campus, inspired by GWU, this is a graduate school. 
 
