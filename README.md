@@ -47,8 +47,11 @@ Assigning an advisor with the Graduate Secretary View.
 
 <img width="710" alt="Screen Shot 2022-05-17 at 12 02 17 PM" src="https://user-images.githubusercontent.com/73393532/168862035-17e65a95-8684-421f-a195-7de3310e0a58.png">
 
+Reviewing applications to graduate with the Graduate Secretary View. 
 
 <img width="715" alt="Screen Shot 2022-05-17 at 12 25 26 PM" src="https://user-images.githubusercontent.com/73393532/168862080-2f60414e-2602-4613-98d6-9b401f40a561.png">
+
+Security screen displayed when accessing an unauthorized route.
 
 
 
