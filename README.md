@@ -1,8 +1,14 @@
 # University-System
 
 This is flask powered application that interacts with an SQL database. 
-
 This application provides a full univserity workflow. Name Hippo Campus, inspired by GWU, this is a graduate school. 
+
+The application implements the use of connection to database, which at the time of its creation was powered on AWS. The website itself was also hosted on AWS. All users information for the site is stored in the database. The schema contains a central table of users for the system, and then relations to the users table for specific kinds of users. Additionally, it stores all of the data for the application, including courses, a student's history, applications, and much more. The database satifies 3NF. 
+
+The application utilizes session variables to keep track of users. Security for the site is also dependent on session variables. For any given route a user accesses, it will check the session variable first to ensure that user has access. If they do not it will reroute them out of the system and clear all sessions. 
+
+This project implements Bootstrap for uniform html styling across all pages. Javascript is implemented on pages requiring different support for different users. 
+
 
 # Applying to the University
 Prospective students are able to apply to the university if they submit a transcript and Hippo Campus recieves letters of recommendation for the prospective student. The system both supports MS and PhD students, decided upon in their application. Depending on what they would like to apply to the university for, it will change their requirements to be admitted and documentation required. This implentation was handled using JavaScript.
@@ -13,7 +19,7 @@ Faculty reviewers, faculy of HC, the review the student's application and report
  
  Students now can view the course catalog and register for courses. The registration system prevents users from registering for conflicting times, courses that require prerequistes not met, and other errors. After a course is registered for, it will show in their current enrollment and display on their transcript as in progress. When a course is graded, their grade will display and their transcript will be recalculated. 
 
-In order to graduate MS and PhD students must submit a Form 1. This is similar to a plan of study, this will check a student is taking the proper requirements to gradute and will alert a student if they are not. This plan of study checks items like credit hours and course requirements. A student has to then apply to graduate where the system will automatically audit their grades, course history, gpa, and more. If they are a PhD student, they must also have an approved final thesis from their faculty advisor. 
+In order to graduate MS and PhD students must submit a Form 1. This is similar to a plan of study, this will check a student is taking the proper requirements to gradute and will alert a student if they are not. This plan of study checks items like credit hours and course requirements. A student has to then apply to graduate where the system will automatically audit their grades, course history, gpa, and more. If they are a PhD student, they must also have an approved final thesis from their faculty advisor. If they are approved, they become alumni of HC. 
 
 
 # Faculty Roles
