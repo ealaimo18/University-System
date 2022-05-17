@@ -35,7 +35,11 @@ In order to graduate MS and PhD students must submit a Form 1. This is similar t
 
 <img width="748" alt="Screen Shot 2022-05-17 at 12 01 13 PM" src="https://user-images.githubusercontent.com/73393532/168861973-4eb54e06-b01c-4870-a95f-e6e36b24bcc3.png">
 
+Transcript view for an Alumni.
+
 <img width="713" alt="Screen Shot 2022-05-17 at 12 01 29 PM" src="https://user-images.githubusercontent.com/73393532/168862016-05d255c3-db8d-4523-baf2-069ec1280b71.png">
+
+
 
 <img width="714" alt="Screen Shot 2022-05-17 at 12 02 40 PM" src="https://user-images.githubusercontent.com/73393532/168862052-cbe86ac5-aa4d-4dd8-b9d2-d8c9bb0f2301.png">
 
