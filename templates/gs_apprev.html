@@ -1,0 +1,145 @@
+<html>
+    <head>
+        <title>Applications</title>
+        <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+        <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+        <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+    </head>
+
+    <body>
+        <div class="card-body">
+            <header>
+        <h1>Welcome {{ session["name"] }}!</h1>
+        <!-- <h2> UID: {{ session['user_id'] }} </h2> -->
+        <!-- <b>Search by UID:</b><br><form method="POST" action="/search"><input type="text" name="search" placeholder="Enter User UID"></input>
+            <button type="submit" class="btn btn-sm rounded-pill btn-primary" name="submit">Search</button> </form>
+            <br><br> -->
+            <form method="POST" action="/search">
+                <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+                  <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
+                    <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                      <i class="bx bx-menu bx-sm"></i>
+                    </a>
+                  </div>
+                  <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse"> 
+                    <!-- Search -->
+                    <div class="navbar-nav align-items-center">
+                      <div class="nav-item d-flex align-items-center">
+                        <i class="bx bx-search fs-4 lh-0"></i>
+                        <input type="text" name="search" class="form-control border-0 shadow-none" placeholder="Search for name..." aria-label="Search...">
+                      </div>
+                    </div>
+                    <!-- /Search -->
+                    <ul class="navbar-nav flex-row align-items-center ms-auto">
+                      <!-- Place this tag where you want the button to render. -->
+                      <li class="nav-item lh-1 me-3">
+                        <span></span>
+                      </li>
+                    </ul>
+                    <button type="submit" class="btn btn-sm rounded-pill btn-primary" name="submit">Search</button> 
+                  </div> 
+              </nav>
+            </form>
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+     
+                <div class="card">
+                <div class="table-responsive text-nowrap">
+                  <h5 class="card-header">Applications</h5>
+                <table class="table">
+                    <thead class="table-light">
+                      <tr>
+                        <th>Incomplete Applications</th>
+                      </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        {% for applicant in applicants: %}
+                        <tr>
+                          {% if applicant['app_stat'] == 'INCOMPLETE' %}
+                            <td><a href="/app-comp/{{ applicant['user_id'] }}">{{ applicant['fname'] }} {{ applicant['lname'] }}</a></td>
+                          {% endif %}
+                        </tr>
+                      {% endfor %}
+                  </tbody>
+                </table>
+                <table class="table">
+                    <thead class="table-light">
+                        <tr>
+                        <th>Applications to Review</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        {% for applicant in applicants: %}
+                        <tr>
+                            {% if applicant['app_stat'] == 'COMPLETE' %}
+                            {% if applicant['decision'] == 'NA' %}
+                                <td><a href="/app-review/{{ applicant['user_id'] }}">{{ applicant['fname'] }} {{ applicant['lname'] }}</a></td>
+                            {% endif %}
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table class="table">
+                    <thead class="table-light">
+                        <tr>
+                        <th>Admitted Applicants</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        {% for applicant in applicants: %}
+                        <tr>
+                            {% if applicant['decision'] == 'Admit without Aid' %}
+                            <td><a href="/app-review/{{ applicant['user_id'] }}">{{ applicant['fname'] }} {{ applicant['lname'] }}</a></td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table class="table">
+                    <thead class="table-light">
+                        <tr>
+                        <th>Applicants Admitted with Aid</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        {% for applicant in applicants: %}
+                        <tr>
+                            {% if applicant['decision'] == 'Admit with Aid' %}
+                            <td><a href="/app-review/{{ applicant['user_id'] }}">{{ applicant['fname'] }} {{ applicant['lname'] }}</a></td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <table class="table">
+                    <thead class="table-light">
+                        <tr>
+                        <th>Rejected Applicants</th>
+                        </tr>
+                    </thead>
+                    <tbody class="table-border-bottom-0">
+                        {% for applicant in applicants: %}
+                        <tr>
+                            {% if applicant['decision'] == 'Reject' %}
+                            <td><a href="/app-review/{{ applicant['user_id'] }}">{{ applicant['fname'] }} {{ applicant['lname'] }}</a></td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                    </table>
+                </div>
+                </div>
+                 <hr class="my-5" />
+                <!--
+                <a type="button" href="/home" class="btn rounded-pill btn-primary">
+                  <span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+                </a> -->
+              </div>
+              <a type="button" href="/home" class="btn rounded-pill btn-primary">
+                <span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+            </a>
+        </header>
+        </div>
+    </body>
+</html>

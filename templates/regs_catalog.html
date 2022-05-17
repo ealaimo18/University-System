@@ -1,0 +1,65 @@
+<html>
+  <head>
+    <title>Course Catalog</title>
+    <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+    <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+    <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+  </head>
+  <body>
+
+
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+     
+      <div class="card">
+      <div class="table-responsive text-nowrap">
+        <h5 class="card-header">Course Catalog</h5>
+      <table class="table">
+        <thead class="table-light">
+          <tr>
+            <th>Subject</th>
+            <th>Course</th>
+            <th>Title</th>
+            <th>Credit Hours</th>
+            <th>Days</th>
+            <th>Time Slot</th>
+            <th>Prerequisites</th>
+          </tr>
+        </thead>
+        <tbody class="table-border-bottom-0">
+          {% for course in courses: %}
+          <tr>
+            <td> {{course['dept']}}</td>
+            <td> {{course['cnum']}}</td>
+            <td> {{course['title']}}</td>
+            <td> {{course['credits']}}</td>
+            <td> {{course['day']}}</td>
+            <td> {{course['start_time']}} - {{course['end_time']}}</td>
+            <td> 
+              {% for c_prereq in c_prereqs: %}
+                {% if c_prereq['course_id'] == course['course_id']: %}
+                  {% for allcourse in allcourses: %}
+                    {% if allcourse['course_id'] == c_prereq['pr_cid']: %}
+                      {{allcourse['title']}}
+                      <br>
+                    {% endif %}
+                  {% endfor %}
+                {% endif %}
+              {% endfor %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+        </table>
+      </div>
+      </div>
+      <hr class="my-5" />
+      <a type="button" href="/home" class="btn rounded-pill btn-primary">
+        <span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+      </a>
+    </div>
+    
+    
+  </body>
+
+</html>

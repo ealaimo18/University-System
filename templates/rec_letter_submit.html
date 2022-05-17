@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Submit your Recommendation</title>
+        <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+        <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+        <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+    </head>
+
+    <body>
+        <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+              <div class="card mb-4">
+    
+       
+<!-- 
+        <br><br>
+        Click here to submit your recommendation<br> -->
+        &nbsp;<h3 class="mb-0">Write your recommendation here</h3>
+        Please limit it to 500 words
+        <form action="/rec_submit", method="POST">
+            <input class="form-control" type="text" name="rec_submit_name" placeholder="Your Name"><br>
+            <textarea class="form-control" cols="50" rows="5" name="rec_textarea"></textarea>
+            <br><br>
+            <button type="submit" class="btn rounded-pill btn-primary" name="submit">Submit</button>
+        </form>
+        </div>
+        </div>
+        </div>
+    </body>
+
+</html>

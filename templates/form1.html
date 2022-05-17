@@ -1,0 +1,89 @@
+<html>
+	<head>
+		<title> Form1 </title>
+        <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+        <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+        <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+	</head>
+
+
+
+	<body>
+        {% if message: %}
+        <div class="card-body demo-vertical-spacing demo-only-element">
+        {{message}}
+        </div>
+        {% else %}
+        {% if error != 0: %}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                {% if err_degree : %}
+                    {{err_degree}}
+                {% endif %}
+                {% if err_core : %}
+                    {{err_core}}
+                {% endif %}
+                {% if err_credits : %}
+                    {{err_credits}}
+                {% endif %}
+                {% if err_other_courses: %}
+                    {{err_other_courses}}
+                {% endif %}
+                {% if err_cscredits : %}
+                    {{err_cscredits}}
+                {% endif %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endif %}
+
+        <div class="card-body demo-vertical-spacing demo-only-element">
+            <h1>
+                FORM 1 
+            </h1>
+            <form action="/form1" method="POST">
+                <div class="mb-3">
+                    <label for="exampleFormControlSelect1" class="form-label">Select Degree Type: </label>
+                    <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example"  name="degree_type">
+                        <option value="none">Select Degree</option>
+                        <option value="MS">MS</option>
+                        <option value="PHD">PHD</option>
+                    </select>
+                </div>
+
+                {% for i in range(0, max_length) %}
+                    <div class="input-group">
+
+                        <label for="c_sub" class="form-label" >Course Subject: </label> 
+                        <input type="text"  name="c_sub_{{i}}" placeholder=" 'CSCI' " maxlength="4" minlength="3" class="form-control" aria-describedby="defaultFormControlHelp" style="text-transform:uppercase">
+                        
+                        <label for="c_num" class="form-label" >Course Subject: </label> 
+                        <input type="number"  name="c_num_{{i}}" placeholder=" '0000' " maxlength="4" minlength="4" class="form-control" aria-describedby="defaultFormControlHelp">
+
+                    </div>
+                {%endfor%}
+
+                <div class="mt-2">
+					<input type="submit" class="btn rounded-pill btn-primary">
+				</div>
+            </form>
+            {% endif %}
+            <a type="button" href="/home" class="btn rounded-pill btn-primary">
+                <span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+            </a>
+        </div>
+   
+
+        <script src="/static/assets/vendor/libs/jquery/jquery.js"></script>
+        <script src="/static/assets/vendor/libs/popper/popper.js"></script>
+        <script src="/static/assets/vendor/js/bootstrap.js"></script>
+        <script src="/static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    
+        <script src="/static/assets/vendor/js/menu.js"></script>
+        <!-- endbuild -->
+    
+        <!-- Vendors JS -->
+    
+        <!-- Main JS -->
+        <script src="/static/assets/js/main.js"></script>
+	</body>
+  
+</html>

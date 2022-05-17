@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>
+        Admin Page
+    </title>
+    <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+    <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+    <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+</head>
+
+    <body>
+        <div class="content-wrapper">
+            <!-- Content -->
+
+            <div class="container-xxl flex-grow-1 container-p-y">
+
+              <div class="card mb-4">
+                {% if success == 1: %}
+                  <div class="alert alert-success alert-dismissible" role="alert">
+                    Successfully changed semester to {{ cur_sem }} {{ cur_year }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+              {% endif %}
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0">Set Current Semester and Year</h5>
+                </div>
+                </div>
+                <div class="card-body">
+                  <form action="/setsem" method="POST">
+                    <div class="col-md">
+                        <div class="form-check mt-3">
+                          {% if cur_sem == 'FALL' %}
+                          <input
+                            name="sem"
+                            class="form-check-input"
+                            type="radio"
+                            value="FALL"
+                            id="fall"
+                            checked ="checked"
+                          />
+                          {% else %}
+                          <input
+                            name="sem"
+                            class="form-check-input"
+                            type="radio"
+                            value="FALL"
+                            id="fall"
+                          />
+                          {% endif %}
+                          <label class="form-check-label" for="fall"> Fall </label>
+                        </div>
+                        <div class="form-check">
+                          {% if cur_sem == 'SPRING' %}
+                          <input
+                            name="sem"
+                            class="form-check-input"
+                            type="radio"
+                            value="SPRING"
+                            id="spring"
+                            checked ="checked"
+                          />
+                          {% else %}
+                          <input
+                            name="sem"
+                            class="form-check-input"
+                            type="radio"
+                            value="SPRING"
+                            id="spring"
+                          />
+                          {% endif %}
+                          <label class="form-check-label" for="spring"> Spring </label>
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="html5-number-input" class="col-md-2 col-form-label">Year</label>
+                            <br><br>
+                            <div class="col-md-10">
+                              <input class="form-control" type="number" id="year" name="year" value={{cur_year}} min="2022"/>
+                            </div>
+                        </div>
+                      <button type="submit" class="btn btn-primary">Update</button>
+                      &nbsp;&nbsp;&nbsp;
+                      <a type="button" href="/" class="btn rounded-pill btn-primary">
+                        <span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+                      </a>
+                    </div>
+                  </form>
+                </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="/static/assets/vendor/libs/jquery/jquery.js"></script>
+        <script src="/static/assets/vendor/libs/popper/popper.js"></script>
+        <script src="/static/assets/vendor/js/bootstrap.js"></script>
+        <script src="/static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    
+        <script src="/static/assets/vendor/js/menu.js"></script>
+        <!-- endbuild -->
+    
+        <!-- Vendors JS -->
+    
+        <!-- Main JS -->
+        <script src="/static/assets/js/main.js"></script>
+    </body>
+</html>
+  
+
+

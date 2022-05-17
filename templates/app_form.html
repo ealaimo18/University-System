@@ -1,0 +1,177 @@
+<html
+    lang="en"
+    class="light-style customizer-hide"
+    dir="ltr"
+    data-theme="theme-default"
+    data-assets-path="../assets/"
+    data-template="vertical-menu-template-free"
+>
+    <head>
+        <title>Application</title>
+        <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+        <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+        <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+
+        <meta name="description" content="" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../assets/img/favicon/favicon.ico" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons. Uncomment required icon fonts -->
+    <link rel="stylesheet" href="../assets/vendor/fonts/boxicons.css" />
+
+
+    <!-- Core CSS -->
+    <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+    <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+    <link rel="stylesheet" href="../assets/css/demo.css" />
+
+    <!-- Vendors CSS -->
+    <link rel="stylesheet" href="../assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css" />
+
+    <!-- Page CSS -->
+    <!-- Page -->
+    <link rel="stylesheet" href="/static/page-auth.css" />
+    <!-- Helpers -->
+    <script src="../assets/vendor/js/helpers.js"></script>
+
+    <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
+    <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
+    <script src="../assets/js/config.js"></script>
+  </head>
+
+    <body>
+        <div class="container-xxl">
+            <div class="authentication-wrapper authentication-basic container-p-y">
+              <div class="authentication-inner">
+                <!-- Register -->
+                <div class="card">
+                  <div class="card-body">
+                    <!-- /Logo -->
+                        <h4 class="mb-1">Application</h4>
+                        <p class="mb-4">University ID: {{ uid }}</p>
+                    <form action="/app-form/{{ uid }}" name="app_form" method="POST" >
+                        <br>
+                        <div>
+                            <b>Semester Applying for: *</b><br>
+                            <select name="field_sem" class="form-select">
+                                <option value="Fall">Fall</option>
+                                <option value="Spring">Spring</option>
+                            </select>
+                            <br><br>
+                            <b>Year of Application*</b><br><input type="number" required="required" name="field_year" min=2022 max=2023 class="form-select">
+                            <br><br>
+                            <b>Applying for Degree*</b><br>
+                            <select name="field_appdeg" class="form-select">
+                                <option value="MS">MS</option>
+                                <option value="PHD">PhD</option>
+                            </select><br>
+                        </div>
+                        <br><br>
+                        <p class="mb-4">Summary of Credentials:</p>
+                        <div>
+                            <b>GRE</b><br>
+                            Verbal: <input class="form-control" type="number" min="130" max="170" name="field_grev">
+                            <br>
+                            Quantitative: <input class="form-control" type="number" min="130" max="170" name="field_greq">
+                            <br>
+                            Year of Exam: <input class="form-control" type="number" minlength="4" max="2022" name="field_exyear"><br>
+                            <br><br>
+                            <b>GRE Advanced</b><br>Score: <input class="form-control" type="number" min="200" max="990" step="10" name="field_grescore">
+                            <br>
+                            Subject: <input class="form-control" type="text" name="field_sub"><br>
+                            <br><br>
+                            <b>TOEFL</b><br>Score: <input class="form-control" type="number" min=0 max="120" name="field_toefl">
+                            <br>
+                            Date of Exam: <input class="form-control" type="date" max="2022-05-02" name="field_toefldate"><br>
+                        </div>
+                        <br><br>
+                        <div>
+                            <b>Prior Degrees*</b>
+                                <br>
+                                BS/BA <!-- <input type="hidden" value="0" name="field_priordeg"> -->
+                                <br>
+                                GPA<input class="form-control" type="number" min="0" minlength="3" max="4.00" step="0.01" name="field_degpa" required="required">
+                                <br>
+                                Major<input class="form-control" type="text" name="field_degmajor" required="required">
+                                <br>
+                                Year<input class="form-control" type="number" minlength="4" max="2022" name="field_degyear" required="required">
+                                <br>
+                                University<input class="form-control" type="text" name="field_deguni" required="required">
+                                <br>
+                                MS <!-- <input type="hidden" value="0" name="field_priorms"> -->
+                                <input class="form-check-input" type="checkbox" value="2" name="field_priorms">
+                                <br>
+                                GPA<input class="form-control" type="number" min="0" minlength="3" max="4.00" step="0.01" name="field_msgpa">
+                                <br>
+                                Major<input class="form-control" type="text" name="field_msmajor">
+                                <br>
+                                Year<input class="form-control" type="number" minlength="4" max="2022" name="field_msyear">
+                                <br>
+                                University<input class="form-control" type="text" name="field_msuni">
+                                <br>
+                        </div>
+                        <br><br>
+                        <div>
+                            <b>Areas of Interest: </b><input class="form-control" type="text" placeholder="None" name="field_int">
+                            <br><br>
+                            <b>Work Experience: </b><input class="form-control" type="text" placeholder="None" name="field_exp"><br>
+                        </div>
+                        <br><br><br>
+                        <button type="submit" class="btn rounded-pill btn-primary" onclick="validate()" name="submit">Submit</button>
+
+
+                    </form>
+                    <script>
+                        function validate() {
+                            let deg = document.forms["app_form"]["field_appdeg"].value;
+                            let a = document.forms["app_form"]["field_grev"].value;
+                            let b = document.forms["app_form"]["field_greq"].value;
+                            let c = document.forms["app_form"]["field_exyear"].value;
+                            let d = document.forms["app_form"]["field_priorms"].value;
+                            let e = document.forms["app_form"]["field_msgpa"].value;
+                            let f = document.forms["app_form"]["field_msmajor"].value;
+                            let g = document.forms["app_form"]["field_msyear"].value;
+                            let h = document.forms["app_form"]["field_msuni"].value;
+            
+                            if (deg == "PHD" && (a=="" || b=="" || c=="" || d=="" || e=="" || f=="" || g=="" || h=="")){
+                                var grev = document.querySelector('input[name="field_grev"]');
+                                var greq = document.querySelector('input[name="field_greq"]');
+                                var gre_year = document.querySelector('input[name="field_exyear"]');
+                                var ms = document.querySelector('input[name="field_priorms"]');
+                                var gpa = document.querySelector('input[name="field_msgpa"]');
+                                var major = document.querySelector('input[name="field_msmajor"]');
+                                var year = document.querySelector('input[name="field_msyear"]');
+                                var uni = document.querySelector('input[name="field_msuni"]');
+            
+                                grev.required="required";
+                                greq.required="required";
+                                gre_year.required="required";
+                                ms.required="required";
+                                gpa.required="required";
+                                major.required="required";
+                                year.required="required";
+                                uni.required="required";
+                                alert("Missing information for PhD application")
+                                return false;
+                            }
+                        }
+                    </script>
+                    <br><br>
+                    <div class="buy-now">
+                        <a href="javascript:void(0);" onclick="javascript:window.location.href='/home';" target="_blank" class="btn btn-danger btn-buy-now">Return</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

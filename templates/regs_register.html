@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+  <!-- =========================================================
+  * Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+  ==============================================================
+  
+  * Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+  * Created by: ThemeSelection
+  * License: You must have a valid license purchased in order to legally use the theme for your project.
+  * Copyright ThemeSelection (https://themeselection.com)
+  
+  =========================================================
+   -->
+  <!-- beautify ignore:start -->
+  <html>
+    <head>
+      <title>Register</title>
+      <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+      <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+      <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+    </head>
+  <body>
+    <div class="container-xxl flex-grow-1 container-p-y">
+      {% if err == 1: %}
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        This is a danger dismissible alert — check it out!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endif %}
+      {% if err == 2: %}
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        Error. Cannot register for  {{pr['courseid']}} without proper prerequisite(s).
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endif %}
+      {% if err == 3: %}
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        Error. Cannot register due to time conflict.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endif %}
+      {% if err == 4: %}
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        Error. No courses added to regsitration list.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endif %}
+      {% if err == 5: %}
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        Error. Cannot register for a course that has been taken.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endif %}
+
+      
+      <div class="card">
+      <div class="table-responsive text-nowrap">
+    <table class="table">
+      <thead class="table-light">
+      <tr>
+        <th>Subject</th>
+        <th>Course</th>
+        <th>Title</th>
+        <th>Credit Hours</th>
+        <th>Day</th>
+        <th>Time Slot</th>
+      </tr>
+      </thead>
+      <tbody class="table-border-bottom-0">
+      
+      {% for course in courses: %}
+        <tr>
+          <td> {{course['dept']}}</td>
+          <td> {{course['cnum']}}</td>
+          <td> {{course['title']}}</td>
+          <td> {{course['credits']}}</td>
+          <td> {{course['day']}}</td>
+          <td> {{course['start_time']}} - {{ course['end_time'] }}</td>
+          {% if course['title'] in session['oldcart']: %}
+            <form action= '/regs_remove/{{ course['title'] }}' method="POST">
+            <td> <input type="submit" class="btn btn-sm rounded-pill btn-outline-primary" value="Remove course"></td>
+            </form>
+          {% else: %}
+          <form action= '/regs_register/{{ course['title'] }}' method="POST">
+          <td> <input type="submit" class="btn btn-sm rounded-pill btn-primary" value="Add course"></td>
+          </form>
+          {% endif %}
+        </tr>
+      {% endfor %}
+    </tbody>
+      </table>
+      </div>
+      </div>
+      
+      <br>
+
+      <a type="button" href="/regs_submit" class="btn rounded-pill btn-primary">
+        <span class="tf-icons bx bxs-user-check"></span>&nbsp; Complete Registration
+      </a>
+
+      <a type="button" href="/home" class="btn rounded-pill btn-primary">
+        <span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+      </a>
+
+      <script src="/static/assets/vendor/libs/jquery/jquery.js"></script>
+      <script src="/static/assets/vendor/libs/popper/popper.js"></script>
+      <script src="/static/assets/vendor/js/bootstrap.js"></script>
+      <script src="/static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+  
+      <script src="/static/assets/vendor/js/menu.js"></script>
+      <!-- endbuild -->
+  
+      <!-- Vendors JS -->
+  
+      <!-- Main JS -->
+      <script src="/static/assets/js/main.js"></script>
+  
+      
+    
+    
+  </body>
+
+</html>
+
+

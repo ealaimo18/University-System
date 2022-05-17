@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <title>{{ user['lname'] }}, {{ user['fname'] }}</title>
+        <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+        <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+        <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+    </head>
+    <body>
+        <div class="card-body">
+			<a type="button" href="/home" class="btn rounded-pill btn-primary" >
+				<span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+			</a>
+			<!-- <h1> Edit Personal Information </h1> -->
+		</div>	
+		<div class="card-body">
+			<h1> {{ user['fname'] }} {{ user['lname'] }} </h1>
+            <h2> ID: {{ user['user_id'] }}</h2>
+			<!-- action="/user-info/{{ user['user_id'] }}" id="formAccountSettings" method="POST" -->
+			<form action="/user-info/{{ user['user_id'] }}" id="formAccountSettings" method="POST">
+				<!-- <div class="row"> -->
+                <div class="mb-3 col-md-6">
+                    <label for="utype" class="form-label">User role</label>
+                    <select class="select2 form-select" name="field_utype">
+                        <option value="none" selected disabled hidden>{{ user['utype'] }}</option>
+                        <option value="grad_sec">Grad Secretary (GS)</option>
+                        <option value="fac_rev">Faculty Reviewer</option>
+                        <option value="cac">CAC</option>
+                        <option value="Instructor">Instructor</option>
+                        <option value="fac_adv">Faculty Advisor</option>
+                        <option value="prospect_std">Prospective Student</option>
+						<option value="student">Student</option>
+					</select>
+                </div>
+				<div class="mt-2">
+					<input type="submit" value="update" class="btn btn-primary me-2">
+				</div>
+                <div class="mb-3 col-md-6">
+					<label for="uname" class="form-label">Username</label>
+					<input class="form-control" type="text" id="uname" name="field_uname" value="{{user['username']}}" maxlength="50"autofocus="">
+				</div>
+                <div class="mb-3 col-md-6">
+					<label for="password" class="form-label">Password</label>
+					<input
+                      type="password"
+                      id="password"
+                      class="form-control"
+                      name="field_pass"
+                      placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
+                      aria-describedby="password"
+                    />
+                    <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="firstName" class="form-label">First Name</label>
+					<input class="form-control" type="text" id="firstName" name="field_fname" value="{{user['fname']}}" maxlength="50"autofocus="">
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="lastName" class="form-label">Last Name</label>
+					<input class="form-control" type="text" name="field_lname" maxlength="50" id="lastName" value="{{user['lname']}}">
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="email" class="form-label">E-mail</label>
+					<input class="form-control" type="text" id="email" name="field_email"  maxlength="50" value="{{user['email']}}">
+				</div>
+				<div class="mb-3 col-md-6">
+					<label class="form-label" for="country">Pronouns</label>
+					<select id="country" class="select2 form-select" name="field_prons">
+						<option value="none" selected disabled hidden>{{user['pronouns']}}</option>
+						<option value="she/her">she/her</option>
+						<option value="he/him">he/him</option>
+						<option value="they/them">they/them</option>
+					</select>
+				</div>
+				<div class="mb-3 col-md-6">
+					<label class="form-label" for="phoneNumber">Phone Number</label>
+					<div class="input-group input-group-merge">
+					<span class="input-group-text">US (+1)</span>
+					<input type="tel" id="phoneNumber" class="form-control" name="field_phone"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}||None" value="{{user['phone']}}" >
+					</div>
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="dob" class="form-label">Date of Birth</label>
+					<input type="date" class="form-control" id="dob" name="field_dob" maxlength="50" value="{{user['dob']}}">
+
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="address" class="form-label">Address</label>
+					<input type="text" class="form-control" id="address" name="field_stadd" maxlength="50" value="{{user['street_add']}}">
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="address" class="form-label">City/Town</label>
+					<input type="text" class="form-control" id="address" name="field_city" maxlength="50" value="{{user['city']}}">
+					</div>
+				<div class="mb-3 col-md-6">
+					<label for="state" class="form-label">State</label>
+					<input class="form-control" type="text" id="state" name="field_state"  maxlength="2" value="{{user['state']}}">
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="zipCode" class="form-label">Zip Code</label>
+					<input type="text" class="form-control" id="zipCode" name="field_zip" maxlength="5" value="{{user['zipcode']}}">
+				</div>
+				</div>
+				<div class="mt-2">
+					<input type="submit" value="update" class="btn btn-primary me-2">
+				</div>
+			</form>
+		</div>
+    </body>
+</html>

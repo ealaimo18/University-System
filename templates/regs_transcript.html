@@ -1,0 +1,60 @@
+<html>
+  <head>
+    <title>My Transcript</title>
+    <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+    <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+    <script src="../assets/vendor/js/helpers.js"></script>
+    <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+  </head>
+  <body>
+    
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h1>Transcript - {{ name }}</h1>
+    
+    {% for key in semesters.keys() %}
+    <hr class="my-5" />
+    <div class="card">
+      <h5 class="card-header">{{ key }}</h5>
+    <div class="table-responsive text-nowrap">
+    <table class="table">
+      <caption class="ms-4">GPA: {{ gpas[key] }}</caption>
+      <thead class="table-light">
+        <tr>
+          <th>Subject</th>
+          <th>Course</th>
+          <th>Title</th>
+          <th>Grade</th>
+          <th>Credit Hours</th>
+        </tr>
+      </thead>
+      <tbody class="table-border-bottom-0">
+      {% for course in semesters[key]: %}
+        <tr>
+          <td> {{course['dept']}}</td>
+          <td> {{course['cnum']}}</td>
+          <td> {{course['title']}}</td>
+          <td> {{course['grade']}}</td>
+          <td> {{course['credits']}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+      </table>
+    </div>
+    </div>
+    {% endfor %}
+
+    <p>Cumulative GPA: {{ cum_gpa }}</p>
+    <p>Total Credits Earned: {{ credits }}</p>
+    {% if session['user_type'] ==  'alumni': %}
+      <p>Graduated in {{year}} with a {{program}} degree.</p>
+    {% endif %}
+
+    <a type="button" href="/home" class="btn rounded-pill btn-primary">
+      <span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+    </a>
+  </div>
+    
+  </body>
+
+</html>
+

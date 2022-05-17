@@ -1,0 +1,35 @@
+<html>
+	<head>
+		<title> Thesis </title>
+		<link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+   		<link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+    	<link rel="stylesheet" href="/static/fonts/boxicons.css" />
+	</head>
+	<body>
+		<div class="card-body">	
+				<h1>Thesis - {{student["fname"]}} {{student["lname"]}}</h1> 
+			{% if message: %}
+					{{message}}
+			{% else %}
+			<p>{{student["thesis"]}}</p>
+			<div class="container-xxl flex-grow-1 container-p-y">
+					<form action = "/approve/{{student['s_id']}}" method="POST">   
+						<input type="submit"  value=" Approve" class="btn btn-primary me-2">
+					</form>
+			
+					<form action = "/deny/{{student['s_id']}}" method="POST">
+						<input type="submit" class="btn btn-primary me-2" value="    Deny   ">
+					</form>
+			</div>
+			{% endif %}	
+			<br>
+			<a type="button" href="/home" class="btn rounded-pill btn-primary">
+				<span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+			</a>
+		</div>
+	</body>
+
+
+
+</html>
+

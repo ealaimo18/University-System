@@ -1,0 +1,322 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+    />
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+    <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+    <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+    <link rel="stylesheet" href="/static/gradient.css" />
+  </head>
+    <body class="mainHeader">
+      <!-- <header id="home" class="mainHeader"> -->
+      <header>
+        <div class="container-xxl flex-grow-1 container-p-y"></div>
+          {% if login == True: %}
+            <a type="button" href="/regs_logout" class="btn rounded-pill btn-primary">
+            <span class="tf-icons bx bx-log-out"></span>&nbsp; Log Out
+            </a>
+          {% endif %}
+          {% if session['user_type'] == 'Instructor': %}
+            <a type="button" href="/regs_grade_entry" class="btn rounded-pill btn-primary">
+              <span class="tf-icons bx bxs-edit"></span>&nbsp; Enter Grades
+            </a>
+          {% endif %}
+          {% if session['user_type'] == 'grad_sec': %}
+            <a type="button" href="/regs_grade_entry" class="btn rounded-pill btn-primary">
+            <span class="tf-icons bx bxs-edit"></span>&nbsp; Enter Grades
+            </a>
+            <a type="button" href="/gs_apprev" class="btn rounded-pill btn-primary">
+            <span class="tf-icons bx bxs-edit"></span>&nbsp; View Applicants
+            </a>
+            <a type="button" href="/assign_advisor"class="btn rounded-pill btn-primary">
+            <span class="tf-icons bx bxs-edit"></span>&nbsp; Assign Advisors
+            </a>
+            <a type="button" href="/review_gradapps"class="btn rounded-pill btn-primary">
+            <span class="tf-icons bx bxs-edit"></span>&nbsp; Review Graduation Applications
+            </a>
+            <a type="button" href="/students_data"class="btn rounded-pill btn-primary">
+            <span class="tf-icons bx bxs-edit"></span>&nbsp; View Students Data
+            </a>
+          {% endif %}
+          {% if session['user_type'] == 'sys_admin': %}
+            <a type="button" href="/chyear" class="btn rounded-pill btn-primary">
+              <span class="tf-icons bx bx-calendar-edit"></span>&nbsp;Update Current Year and Semester
+            </a>
+            <a type="button" href="/signup" class="btn rounded-pill btn-primary">
+              <span class="bx bx-user me-1"></i></span>&nbsp; Create New User
+            </a>
+          {% endif %}
+          {% if session['user_type'] == 'student': %}
+            <a type="button" href="/regs_transcript/{{session['user_id']}}" class="btn rounded-pill btn-primary">
+              <span class="tf-icons bx bxs-graduation"></span>&nbsp;View Transcript
+            </a>
+            <a type="button" href="/regs_register" class="btn rounded-pill btn-primary">
+              <span class="tf-icons bx bx-add-to-queue"></span>&nbsp;Register for Classes
+            </a>
+            <a type="button" href="/regs_enrollment" class="btn rounded-pill btn-primary">
+              <span class="tf-icons bx bxs-user-check"></span>&nbsp;View Current Enrollment
+            </a>
+            <a type="button" href="/regs_coursecatalog" class="btn rounded-pill btn-primary">
+              <span class="tf-icons bx bx-book-open"></span>&nbsp;Course Catalog
+            </a>
+            <a type="button" href="/form1" class="btn rounded-pill btn-primary">
+              <span class='bx bx-list-check'></span>&nbsp; Form 1
+            </a>
+            <a type="button" href="/appgrad" class="btn rounded-pill btn-primary">
+              <span class="tf-icons bx bxs-graduation"></span>&nbsp; Apply to Graduate
+            </a>
+            <a type="button" href="/personal_info/{{ session['user_id'] }}" class="btn rounded-pill btn-primary">
+              <span class="tf-icons bx bxs-edit"></span>&nbsp; Personal Information
+            </a>
+          {% endif %}
+          {% if session["user_type"] == "alumni": %}
+            <a type="button" href="/personal_info/{{ session['user_id'] }}" class="btn rounded-pill btn-primary">
+              <span class="tf-icons bx bxs-edit"></span>&nbsp; Personal Information
+            </a>  
+            <a type="button" href="/regs_transcript/{{session['user_id']}}" class="btn rounded-pill btn-primary">
+              <span class="tf-icons bx bxs-graduation"></span>&nbsp;View Transcript
+            </a>
+           {% endif %}
+          <div class="nameContainer"></div>
+            <h1>
+              <b> {{ session['name'] }} </b>
+            </h1>
+          </div>
+        </div>
+      </header>
+      <br><br>
+  
+    {% if session['user_type'] == 'student': %}
+    <div class="container-xxl flex-grow-1 container-p-y">
+      {% if student['program'] == 'PHD': %}
+        <a type="button" href="/thesis/{{session['user_id']}}" class="btn rounded-pill btn-primary">
+          <span class="tf-icons bx bxs-file"></span>&nbsp; Submit a Thesis
+        </a>  
+      {% endif %}
+      </div>
+    {% endif %}
+
+    {% if session["user_type"] == "sys_admin": %}  
+    <form method="POST" action="/search">
+        <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+          <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
+            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+              <i class="bx bx-menu bx-sm"></i>
+            </a>
+          </div>
+          <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse"> 
+            <!-- Search -->
+            <div class="navbar-nav align-items-center">
+              <div class="nav-item d-flex align-items-center">
+                <i class="bx bx-search fs-4 lh-0"></i>
+                <input type="text" name="search" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search...">
+              </div>
+            </div>
+            <!-- /Search -->
+            <ul class="navbar-nav flex-row align-items-center ms-auto">
+              <!-- Place this tag where you want the button to render. -->
+              <li class="nav-item lh-1 me-3">
+                <span></span>
+              </li>
+            </ul>
+            <button type="submit" class="btn btn-sm rounded-pill btn-primary" name="submit">Search</button> 
+          </div> 
+      </nav>
+    </form>
+      
+
+      <div class="container-xxl flex-grow-1 container-p-y">
+        <div class="card">
+          <div class="table-responsive text-nowrap">
+            <table class="table">
+              <thead class="table-light">
+                <tr>
+                  <th>User ID</th>
+                  <th>User's Name</th>
+                  <th>User Type</th>
+                  <th>Edit User</th>
+                  <th>Delete User</th>
+                </tr>
+              </thead>
+        <tbody class="table-border-bottom-0">
+          {% for user in users: %}
+            <tr>
+              <td>{{user["user_id"]}}</td>
+              <td> {{ user['fname'] }} {{ user['lname'] }} </td>
+              <td>{{user["utype"]}}</td>
+              <form action= '/user-info/{{user["user_id"]}}'>
+                <td><input type="submit" class="btn btn-sm rounded-pill btn-primary" value="User Information"></td>
+              </form>
+              {% if user['utype'] != 'sys_admin' %}
+              <form action= '/delete_user/{{user["user_id"]}}'>
+                <td><input type="submit" class="btn btn-sm rounded-pill btn-primary" value="Delete User"></td>
+              </form>
+              {% endif %}
+            </tr>
+          {% endfor %}
+
+    {% endif %}
+
+
+      {% if session["user_type"] == "fac_rev": %}
+        <form method="POST" action="/search">
+          <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+            <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
+              <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+                <i class="bx bx-menu bx-sm"></i>
+              </a>
+            </div>
+            <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse"> 
+              <!-- Search -->
+              <div class="navbar-nav align-items-center">
+                <div class="nav-item d-flex align-items-center">
+                  <i class="bx bx-search fs-4 lh-0"></i>
+                  <input type="text" name="search" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search...">
+                </div>
+              </div>
+              <!-- /Search -->
+              <ul class="navbar-nav flex-row align-items-center ms-auto">
+                <!-- Place this tag where you want the button to render. -->
+                <li class="nav-item lh-1 me-3">
+                  <span></span>
+                </li>
+              </ul>
+              <button type="submit" class="btn btn-sm rounded-pill btn-primary" name="submit">Search</button> 
+            </div> 
+        </nav>
+      </form>
+        <br><br>
+        <h3>List of Applicants:</h3>
+        {% for applicant in applicants: %}
+          <ul>
+            <a href="/app-review/{{ applicant['user_id'] }}">{{ applicant['fname'] }} {{ applicant['lname'] }}</a>
+          </ul>
+        {% endfor %}
+        <br><br><br><br>
+      {% endif %}
+      {% if session["user_type"] == "cac": %}
+      <form method="POST" action="/search">
+        <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
+          <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
+            <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
+              <i class="bx bx-menu bx-sm"></i>
+            </a>
+          </div>
+          <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse"> 
+            <!-- Search -->
+            <div class="navbar-nav align-items-center">
+              <div class="nav-item d-flex align-items-center">
+                <i class="bx bx-search fs-4 lh-0"></i>
+                <input type="text" name="search" class="form-control border-0 shadow-none" placeholder="Search..." aria-label="Search...">
+              </div>
+            </div>
+            <!-- /Search -->
+            <ul class="navbar-nav flex-row align-items-center ms-auto">
+              <!-- Place this tag where you want the button to render. -->
+              <li class="nav-item lh-1 me-3">
+                <span></span>
+              </li>
+            </ul>
+            <button type="submit" class="btn btn-sm rounded-pill btn-primary" name="submit">Search</button> 
+          </div> 
+      </nav>
+    </form>
+        <br><br>
+        <h3>List of Applicants:</h3>
+        {% for applicant in applicants: %}
+          <ul>
+            <a href="/app-review/{{ applicant['user_id'] }}">{{ applicant['fname'] }} {{ applicant['lname'] }}</a>
+          </ul>
+        {% endfor %}
+        <!-- can update the final decision -->
+        <br><br><br><br>
+      {% endif %}
+
+    {% if session["user_type"] == "applicant": %}
+      <b>Your Application Status: {{ msg }}</b>
+      {% if app_stat != "COMPLETE": %}
+        <form action="/rec_request/{{ uid }}">
+          <button type="submit" class="btn btn-sm rounded-pill btn-primary" name="submit">Request a recommendation</button>
+        </form>
+      {% endif %}
+      {% if msg == "Your application for admission has been denied :(": %}
+        <form action="/accept">
+          <button type="submit" class="btn btn-sm rounded-pill btn-primary" name="submit">Accept your position at Hippo Campus</button>
+        </form><br>
+        <form action="/reject">
+          <button type="submit" class="btn btn-sm rounded-pill btn-primary" name="submit">Decline your position at Hippo Campus</button>
+        </form>
+      {% endif %}
+      {% if msg == "Congratulations you have been admitted! You will receive your formal letter of acceptance in the mail.": %}
+        <form action="/accept">
+          <button type="submit" class="btn btn-sm rounded-pill btn-primary" name="submit">Accept your position at Hippo Campus</button>
+        </form><br>
+        <form action="/reject">
+          <button type="submit" class="btn btn-sm rounded-pill btn-primary" name="submit">Decline your position at Hippo Campus</button>
+        </form>
+      {% endif %}
+       <br><br><br><br>
+     {% endif %}
+     {% if session["user_type"] == "prospect_std": %}
+     <!-- start an applicatoin -->
+     Start an Application, friend!
+     <br>
+     <form action="/app-form/{{ session['user_id'] }}">
+       <button type="submit" class="btn rounded-pill btn-primary" name="submit">Apply</button>
+     </form>
+     <br><br><br><br>
+   {% endif %}
+
+     {% if session["user_type"] == "fac_adv": %}
+       <div class="container-xxl flex-grow-1 container-p-y">
+           <div class="card">
+             <div class="table-responsive text-nowrap">
+               <table class="table">
+                 <thead class="table-light">
+                   <tr>
+                     <th>Student Name</th>
+                     <th>Transcripts</th>
+                     <th>Form 1</th>
+                     <th>Thesis (PhD Only)</th>
+                   </tr>
+                 </thead>
+           <tbody class="table-border-bottom-0">
+             {% for student in students: %}
+               <tr>
+                 <td> {{student['fname']}} {{student['lname']}}</td>
+                 <form action= '/regs_transcript/{{student["user_id"]}}'>
+                   <td><input type="submit" class="btn btn-sm rounded-pill btn-primary" value="View Transcript"></td>
+                 </form>
+                 <form action= '/view_form1/{{student["user_id"]}}'>
+                   <td><input type="submit" class="btn btn-sm rounded-pill btn-primary" value="View Form 1"></td>
+                 </form>
+                 {% if student['program'] == 'PHD' %}
+                   <form action= '/view_thesis/{{student["user_id"]}}'>
+                     <td><input type="submit" class="btn btn-sm rounded-pill btn-primary" value="View Thesis"></td>
+                   </form>
+                 {% endif %}
+               </tr>
+             {% endfor %}
+           </tbody>
+         </table>
+       </div>
+      </div>
+     {% endif %}
+     <div class="buy-now">
+      <a href="javascript:void(0);" onclick="javascript:window.location.href='/logout';" target="_blank" class="btn btn-danger btn-buy-now">Log Out</a>
+    </div>
+    <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
+   </body>
+  <script src="../assets/vendor/js/bootstrap.js"></script>
+  <script src="../assets/vendor/js/bootstrap.js"></script>
+  <script src="../assets/vendor/js/bootstrap.js"></script>
+  <script src="../assets/vendor/js/menu.js"></script>
+  <script src="../assets/vendor/js/menu.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/pages-account-settings-account.js"></script>
+  <script async="" defer="" src="https://buttons.github.io/buttons.js"></script>
+ </html>

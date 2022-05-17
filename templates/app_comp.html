@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>Complete Application</title>
+        <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+        <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+        <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+    </head>
+    <body>
+        <div class="container-xxl">
+            <div class="authentication-wrapper authentication-basic container-p-y">
+              <div class="authentication-inner">
+                <!-- Register -->
+                <div class="card">
+                  <div class="card-body">
+        <h1>Review Application</h1>
+        <br><br>
+        <!-- user -->
+        <b>Name:</b> {{ user['lname'] }}, {{ user['fname'] }}<br><br>
+        <b>Student Number:</b> {{ user['user_id'] }}<br><br>
+        <!-- app info -->
+        <b>Semester and Year of Application:</b> {{ application['app_sem'] }} {{ application['app_year'] }}<br><br>
+        <b>Applying for Degree:</b> {{ application['deg_sought'] }}<br><br>
+
+        <!-- <b>Recommendation Letter:</b> -->
+        {% if application['transcript'] == 'Y' %}
+            <b>Missing a letter of recommendation.</b><br>
+            <br>
+        {% endif %}
+        
+        <div class="mb-3 col-md-6">
+            <form action="/update-transcript/{{ uid }}" method="POST">
+                <label class="form-label"  name="updatetranscript" for="country">Transcript Recieved?</label>
+                    <select id="country" class="select2 form-select" name="updatetranscript">
+                        <option value="{{ application['transcript'] }}" selected hidden >{{ application['transcript'] }}</option>
+                        <option value="N">No</option>
+                        <option value="Y">Yes</option>
+                    </select>   
+                    <br>
+            <button type="submit" name="submit" class="btn btn-sm rounded-pill btn-primary">Update</button>
+        </form>
+        </div>
+
+
+
+
+    </div>
+</div>
+</div>
+</div>
+</div>
+    </body>
+</html>

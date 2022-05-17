@@ -1,0 +1,60 @@
+<html>
+  <style>
+    table, th, td {
+      border:1px solid black;
+    }
+    </style>
+	<head>
+		<title> Students Data </title>
+    <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+    <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+    <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+	</head>
+	<body>
+       <div class="container-xxl flex-grow-1 container-p-y">
+        <h1> Students Data</h1> 
+        <div class="card">
+          <div class="table-responsive text-nowrap">
+            <table class="table">
+              <thead class="table-light">
+                <tr>
+                  <th>Student ID</th>
+                  <th>Student Name</th>
+                  <th>Transcript</th>
+                  <th>Advisor</th>
+                </tr>
+              </thead>
+        <tbody class="table-border-bottom-0">
+          {% for student in students: %}
+            <tr>
+              <td>{{student["user_id"]}}</td>
+              <td> {{student['fname']}} {{student['lname']}}</td>
+              <form action= '/regs_transcript/{{student["user_id"]}}'>
+                <td><input type="submit" class="btn btn-sm rounded-pill btn-primary" value="View Transcript"></td>
+              </form>
+              {% for advisor in advisors %}
+                {% if advisor["user_id"] == student["adv_id"]%}
+                  <td> {{advisor["fname"]}} {{advisor["lname"]}}</td>
+                {% endif %}
+                <!-- {% if student["adv_id"]%}
+                  <form action= '/assign_advisor'>
+                    <td><input type="submit" class="btn btn-sm rounded-pill btn-primary" value="Assign Advisor"></td>
+                  </form>
+                {% endif %} -->
+              {% endfor %}
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+   </div>
+   <br>
+
+   <a type="button" href="/home" class="btn rounded-pill btn-primary">
+    <span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+</a>
+   
+
+
+  </body>
+</html>

@@ -1,0 +1,74 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+    <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+    <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+  </head>
+  <body>
+    
+    <div class="card-body demo-vertical-spacing demo-only-element">
+      <h1>
+          Apply To Graduate
+      </h1>
+        <div class="card">
+          <div class="table-responsive text-nowrap">
+            <table class="table">
+              <thead class="table-light">
+                <tr>
+                  <th>Subject</th>
+                  <th>Course</th>
+                  <th>Title</th>
+                  <th>Credit Hours</th>
+                </tr>
+              </thead>
+            <tbody class="table-border-bottom-0">
+              {% for course in courses: %}
+                <tr>
+                  <td> {{course['dept']}}</td>
+                  <td> {{course['cnum']}}</td>
+                  <td> {{course['title']}}</td>
+                  <td> {{course['credits']}}</td>
+                </tr>
+              {% endfor %}
+             </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p>Cumulative GPA: {{gpa}}</p>
+        <p>Total Credits Earned: {{credits}}</p>
+
+        {% if message: %}
+        <div class="alert alert-danger alert-dismissible" role="alert">
+          {{ message }}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      {% else %}
+        <form action="/congrats" method="POST">
+          <input type="submit"  value = "Apply" class="btn btn-primary me-2">
+        </form>
+      {% endif %}
+
+  
+        <a type="button" href="/home" class="btn rounded-pill btn-primary">
+          <span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+        </a>
+  
+        <script src="/static/assets/vendor/libs/jquery/jquery.js"></script>
+        <script src="/static/assets/vendor/libs/popper/popper.js"></script>
+        <script src="/static/assets/vendor/js/bootstrap.js"></script>
+        <script src="/static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    
+        <script src="/static/assets/vendor/js/menu.js"></script>
+        <!-- endbuild -->
+    
+        <!-- Vendors JS -->
+    
+        <!-- Main JS -->
+        <script src="/static/assets/js/main.js"></script>
+  
+        
+
+
+  </body>
+</html>

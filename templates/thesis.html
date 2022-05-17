@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title> Upload Thesis </title>
+            <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+               <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+            <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+
+	</head>
+	<body>
+        <div class="card-body">
+            <h1> Upload Your Thesis </h1>
+            {% if message:%}
+                {{message}}
+            {% else %}
+            <form action="/thesis/{{session['user_id']}}" method="POST">
+                <label for="thesis"> Submit Here (Max Length 1,000 Characters): </label>
+                <input type = "text" name="thesis" maxlength="1000" width="500" height ="500">
+                <input type="submit" value="submit thesis" class="btn btn-primary me-2">
+            </form>
+            {% endif %}
+        <a type="button" href="/home" class="btn rounded-pill btn-primary" >
+            <span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+        </a>
+    </div>
+	</body>  
+</html>

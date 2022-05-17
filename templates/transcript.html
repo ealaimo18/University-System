@@ -1,0 +1,33 @@
+<html>
+    <title>view transcript</title>
+    <link href="../static/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+    <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+    <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+  <body>
+    {% if transcript['gpa'] == 0: %}
+     <p> No course history! courses taken will display here! </p>
+    {% else %}
+        <table>
+            <tr>
+                <th>Course</th>
+                <th>Credit Hours</th>
+                <th>Grade</th>
+            </tr>
+            
+            {% for c in courses %}
+            <tr>
+                <td> {{ c['dept'] }}  {{ c['cnum'] }} </td>
+                <td> {{ c['credits'] }} </td>
+                <td> {{ c['grade']}} </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+        <br>    
+        GPA = {{ transcript['gpa'] }} 
+        <br>
+        Total Credits = {{ transcript['credits'] }}
+    {% endif %}
+    </body>
+</html>

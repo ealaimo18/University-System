@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<title> Personal Information </title>
+		<link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+    	<link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+    	<link rel="stylesheet" href="/static/fonts/boxicons.css" />
+	</head>
+	<body>
+		<!-- <h1 text-align: center> {{session["name"]}} </h1> -->
+		<div class="card-body">
+			<!-- <h1> Edit Personal Information </h1> -->
+		</div>	
+		<div class="card-body">
+			<h1> Edit Personal Information </h1>
+			<form action="/personal_info/{{user_id}}" id="formAccountSettings" method="POST" >
+				<div class="row">
+				<div class="mb-3 col-md-6">
+					<label for="firstName" class="form-label">First Name</label>
+					<input class="form-control" type="text" id="firstName" name="fname" value="{{user_info['fname']}}" maxlength="50"autofocus="">
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="lastName" class="form-label">Last Name</label>
+					<input class="form-control" type="text" name="lname" maxlength="50" id="lastName" value="{{user_info['lname']}}">
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="email" class="form-label">E-mail</label>
+					<input class="form-control" type="text" id="email" name="email"  maxlength="50" value="{{user_info['email']}}" placeholder="john.doe@example.com">
+				</div>
+				<div class="mb-3 col-md-6">
+					<label class="form-label" for="country">Pronouns</label>
+					<select id="country" class="select2 form-select" name="pronouns" value="{{user_info['pronouns']}}">
+						<option value="none">{{user_info['pronouns']}}</option>
+						<option value="she/her">she/her</option>
+						<option value="he/him">he/him</option>
+						<option value="they/them">they/them</option>
+					</select>
+				</div>
+				<div class="mb-3 col-md-6">
+					<label class="form-label" for="phoneNumber">Phone Number</label>
+					<div class="input-group input-group-merge">
+					<span class="input-group-text">US (+1)</span>
+					<input type="tel" id="phoneNumber" class="form-control" name="phone"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}||None" value="{{user_info['phone'] or '555-555-5555'}}" >
+					</div>
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="address" class="form-label">Date of Birth</label>
+					<input type="date" class="form-control" id="address" name="dob" maxlength="50" value="{{user_info['dob']}}" placeholder="Address">
+
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="address" class="form-label">Address</label>
+					<input type="text" class="form-control" id="address" name="street_add" maxlength="50" value="{{user_info['street_add']}}" placeholder="Address">
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="address" class="form-label">City/Town</label>
+					<input type="text" class="form-control" id="address" name="city" maxlength="50" value="{{user_info['city']}}" placeholder="Address">
+					</div>
+				<div class="mb-3 col-md-6">
+					<label for="state" class="form-label">State</label>
+					<input class="form-control" type="text" id="state" name="state"  maxlength="2" value="{{user_info['state']}}" placeholder="CA">
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="zipCode" class="form-label">Zip Code</label>
+					<input type="text" class="form-control" id="zipCode" name="zipcode" maxlength="5" value="{{user_info['zipcode']}}" placeholder="231465">
+				</div>
+				<div class="mb-3 col-md-6">
+					<label for="ssn" class="form-label">SSN</label>
+					<input type="text" class="form-control" id="ssn" name="ssn" minlength="8" maxlength="8" value="{{user_info['ssn']}}" placeholder="000-00-0000">
+				</div>
+				</div>
+				<div class="mt-2">
+					<input type="submit" value="Update" class="btn rounded-pill btn-primary">
+				</div>
+			</form>
+			<a type="button" href="/home" class="btn rounded-pill btn-primary" >
+				<span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+			</a>
+		</div>
+    </body>
+</html>

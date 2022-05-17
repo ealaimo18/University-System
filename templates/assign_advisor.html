@@ -1,0 +1,63 @@
+<html>
+	<head>
+		<title> Assign Advisor </title>
+		<link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+		<link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+		<link rel="stylesheet" href="/static/fonts/boxicons.css" />
+	</head>
+	<body>
+		<div class="card-body">
+		<h1> Assign Advisor</h1>
+		{% if message : %}
+			<div class="alert alert-danger alert-dismissible" role="alert">
+					{{message}}	
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% endif %}
+		<form action="/assign_advisor" method="POST">
+
+			<label for="exampleFormControlSelect1" class="form-label">Select Student: </label>
+            <select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example"  name="student">
+			{% for i in students %}
+  
+            <option value="{{i['user_id']}}"> {{i['fname']}} {{i['lname']}} </option>
+			{% endfor %}
+            </select>
+
+			<br>
+
+			<label for="exampleFormControlSelect1" class="form-label">Select Advisor: </label>
+			<select class="form-select" id="exampleFormControlSelect1" aria-label="Default select example"  name="advisor">
+			{% for i in advisors %}
+  
+            <option value="{{i['user_id']}}"> {{i['fname']}} {{i['lname']}} </option>
+			{% endfor %}
+            </select>
+
+			<br>
+
+            <input type="submit"  class="btn btn-sm rounded-pill btn-primary" name="assign" value="Assign">
+		</form>
+		<br>
+		<a type="button" href="/home" class="btn rounded-pill btn-primary">
+			<span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+		</a>
+		</div>
+	
+
+
+		<script src="/static/assets/vendor/libs/jquery/jquery.js"></script>
+        <script src="/static/assets/vendor/libs/popper/popper.js"></script>
+        <script src="/static/assets/vendor/js/bootstrap.js"></script>
+        <script src="/static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+    
+        <script src="/static/assets/vendor/js/menu.js"></script>
+        <!-- endbuild -->
+    
+        <!-- Vendors JS -->
+    
+        <!-- Main JS -->
+        <script src="/static/assets/js/main.js"></script>
+		
+  </body>
+</html>

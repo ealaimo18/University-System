@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <title>Send a recommendation letter</title>
+        <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+        <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+        <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+    </head>
+
+    <body>
+        <div class="container-xxl">
+            <div class="authentication-wrapper authentication-basic container-p-y">
+              <div class="authentication-inner">
+                <!-- Register -->
+                <div class="card">
+                  <div class="card-body">
+        <!-- need session variables to get the name -->
+        <h4 class="mb-1">Hello {{ title }} {{ name }},</h4>
+        <p class="mb-4">If you would like to write a letter of recommendation for {{ student }}, click the button below.</p>
+        <br><br>
+        <a type="button" href="/rec_submit" class="btn rounded-pill btn-primary">Click Here</a>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+    </body>
+
+</html>

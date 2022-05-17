@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Recommendation Letters</title>
+        <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+        <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+        <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+    </head>
+
+    <body>
+        <h2>Letter from {{ letter['wname'] }}:</h2><br><br>
+        {{ letter['letter'] }}<br><br>
+        <b>Recommendation Letters Rating (Worst=1, Best=5)</b>
+            <form action="/displayletter/{{letter['rec_id']}}", method="POST">
+
+                Rating:     <select name="reviewrating">
+                                <option value="{{letter['rating']}}" selected hidden>{{ letter['rating'] }}</option>
+                                <option value="5">5</option>
+                                <option value="4">4</option>
+                                <option value="3">3</option>
+                                <option value="2">2</option>
+                                <option value="1">1</option>
+                            </select>
+                Generic:    <select name="reviewgeneric">
+                                <option value="{{letter['generic']}}" selected hidden>{{ letter['generic'] }}</option>
+                                <option value="Y">Y</option>
+                                <option value="N">N</option>
+                            </select>
+                Credible:   <select name="reviewcredible">
+                                <option value="{{letter['credibility']}}" selected hidden>{{ letter['credibility'] }}</option>
+                                <option value="Y">Y</option>
+                                <option value="N">N</option>
+                            </select>
+
+                <br><br>
+                <button name="submit" type="submit" class="btn btn-sm rounded-pill btn-primary">Update</button>
+            </form>
+        <form action="/app-review/{{letter['app_id']}}"><button type="submit" name="submit" class="btn btn-sm rounded-pill btn-primary">Return</button></form>
+    </body>
+</html>

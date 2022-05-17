@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<!-- =========================================================
+* Sneat - Bootstrap 5 HTML Admin Template - Pro | v1.0.0
+==============================================================
+
+* Product Page: https://themeselection.com/products/sneat-bootstrap-html-admin-template/
+* Created by: ThemeSelection
+* License: You must have a valid license purchased in order to legally use the theme for your project.
+* Copyright ThemeSelection (https://themeselection.com)
+
+=========================================================
+ -->
+<!-- beautify ignore:start -->
+<html>
+    <head>
+        <title>Update Grades</title>
+        <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+        <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+        <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+        <style type="text/css">   
+            .brmedium {
+                display: block;
+                margin-bottom: .75em;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-xxl flex-grow-1 container-p-y">
+     
+            <div class="card">
+        <h5 class="card-header">Update Grades</h5>
+        <form>
+            <!-- <div class="btn btn-sm btn-label-primary dropdown-toggle"> -->
+                <div class="me-3">
+                <div class="dataTables_length" id="DataTables_Table_0_length">
+                &emsp;<label>
+            {% if courseselected != None %}
+                <h2>{{courseselected}}</h2>
+                <select name="class" class="form-select" style="display:none">
+                <option value="{{courseselected}}" selected>{{courseselected}}</option>
+            </select>
+            {% else %}
+            <span>&emsp;Select Class:</span>
+            <select name="class" class="form-select">
+                {% for course in courses %}
+                        <option value="{{course}}">{{course}}</option>
+                {% endfor %}                                              
+            </select>
+            {% endif %}
+        </label>
+    </div>
+        </div>
+        <span class="brmedium"></span> 
+        {% if courseselected == None %}
+        &emsp;<button type="submit" class="btn btn-sm rounded-pill btn-primary">Submit</button>
+        {% else %}
+        &emsp;<a href="/regs_grade_entry" class="btn btn-sm rounded-pill btn-primary">Choose a Different Course</a>
+        {% endif %}
+        <br></br>
+          {% if courseselected != None %}
+          {% if courseselected != 'None' %}
+          <table class="table">
+            <thread class="table-light">
+                <th>Student</th>
+                <th>Grade</th>
+            <tr>
+            </thread>
+            <tbody class="table-border-bottom-0">
+            {% for student in students %}
+                    <td> {{student['fname'] + " " + student['lname']}}<input type="hidden" name ="student" value ="{{student['student_id']}}"></td>
+                    <td>
+                    {% if courseselected != None %}
+                    <label>
+                    <select name="grade" class="form-select">
+                        <option value="IP" selected>IP</option>
+                        {% for grade in grades %}
+                            {% if gradeselected == grade %}
+                                <option value="{{grade}}" selected>{{grade}}</option>
+                                {% else %}
+                                {% if grade == student['currentgrade'] %}
+                                    <option value="{{grade}}" selected>{{grade}}</option>
+                                {% else %}
+                                <option value="{{grade}}">{{grade}}</option>
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                    {% endif %}
+                </label>
+                </td>
+            </tr>
+            {% endfor %} 
+
+            {% endif %}
+            {% endif %}
+            
+        </form>
+    </tbody>
+    </table>
+    {% if courseselected != None %}
+        &nbsp;
+        <button type="submit" class="btn btn-sm rounded-pill btn-primary">Submit Grades</button>
+        &nbsp;
+        <br>
+    {% endif %}
+    </div>
+    </div>
+    <hr class="my-5" />
+    <a type="button" href="/regs" class="btn rounded-pill btn-primary">
+        <span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+    </a>
+
+    <script src="/static/assets/vendor/libs/jquery/jquery.js"></script>
+      <script src="/static/assets/vendor/libs/popper/popper.js"></script>
+      <script src="/static/assets/vendor/js/bootstrap.js"></script>
+      <script src="/static/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+  
+      <script src="/static/assets/vendor/js/menu.js"></script>
+      <!-- endbuild -->
+  
+      <!-- Vendors JS -->
+  
+      <!-- Main JS -->
+      <script src="/static/assets/js/main.js"></script>
+  
+    </body>
+</html>

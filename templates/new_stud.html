@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <title>New Student Program</title>
+        <link rel="stylesheet" href="/static/core.css" class="template-customizer-core-css" type="text/css" />
+        <link rel="stylesheet" href="/static/theme-default.css" class="template-customizer-theme-css" type="text/css" />
+        <link rel="stylesheet" href="/static/fonts/boxicons.css" />
+    </head>
+    <body>
+        <div class="card-body">
+			<a type="button" href="/home" class="btn rounded-pill btn-primary" >
+				<span class="tf-icons bx bx-home-alt"></span>&nbsp; Home
+			</a>
+			<!-- <h1> Edit Personal Information </h1> -->
+		</div>	
+		<div class="card-body">
+            <form action="/new-stud/{{ uid }}" id="formAccountSettings" method="POST">
+                <div class="mb-3 col-md-6">
+                    <label for="prog" class="form-label">Program</label>
+                    <select class="select2 form-select" name="field_prog" required="required">
+                        <option value="MS">MS</option>
+                        <option value="PHD">PhD</option>
+                    </select>
+                </div>
+                <div class="mt-2">
+					<input type="submit" value="update" class="btn btn-primary me-2">
+				</div>
+            </form>
+        </div>
+    </body>
+</html>
