@@ -39,11 +39,14 @@ Transcript view for an Alumni.
 
 <img width="713" alt="Screen Shot 2022-05-17 at 12 01 29 PM" src="https://user-images.githubusercontent.com/73393532/168862016-05d255c3-db8d-4523-baf2-069ec1280b71.png">
 
-
+Faculty Advisor view for their Advisees.
 
 <img width="714" alt="Screen Shot 2022-05-17 at 12 02 40 PM" src="https://user-images.githubusercontent.com/73393532/168862052-cbe86ac5-aa4d-4dd8-b9d2-d8c9bb0f2301.png">
 
+Assigning an advisor with the Graduate Secretary View. 
+
 <img width="710" alt="Screen Shot 2022-05-17 at 12 02 17 PM" src="https://user-images.githubusercontent.com/73393532/168862035-17e65a95-8684-421f-a195-7de3310e0a58.png">
+
 
 <img width="715" alt="Screen Shot 2022-05-17 at 12 25 26 PM" src="https://user-images.githubusercontent.com/73393532/168862080-2f60414e-2602-4613-98d6-9b401f40a561.png">
 
